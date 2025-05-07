@@ -2,11 +2,38 @@ import 'package:flutter/material.dart';
 import '../models/task.dart';
 import '../services/local_storage_service.dart';
 
+
+enum SortType {name, isDone, noFilter}
+
 class TaskData extends ChangeNotifier {
   List<Task> _tasks = [];
-  int _nextId = 0;
 
-  List<Task> get tasks => _tasks;
+  SortType _sortType = SortType.noFilter;
+
+
+//ancienne methode sans filtre
+//   List<Task> get tasks => _tasks;
+
+  //nouvelle methode utilisant un filtre
+
+  List<Task> get tasks {
+    List<Task> sortedTasks = [..._tasks];
+    if (_sortType == SortType.name) {
+      // tri alphabétique ici
+      sortedTasks.sort((a, b) => a.title.toLowerCase().compareTo(b.title.toLowerCase()));
+    } else if (_sortType == SortType.isDone) {
+      sortedTasks.sort((a, b) => a.isDone.toString().compareTo(b.isDone.toString()));
+    } else {
+      sortedTasks = _tasks;
+    }
+    return sortedTasks;
+  }
+
+
+  void setSortType(SortType type) {
+    _sortType = type;
+    notifyListeners();
+  }
 
   Future<void> loadTasks() async {
     _tasks = await LocalStorageService.loadTasks();
