@@ -1,0 +1,11 @@
+Flutter utilise un système de flexbox pour la mise en page voici un comparatif
+
+🧠 Comparaison Flutter vs Flexbox (CSS)
+Concept Flutter	                    Équivalent CSS	                                Explication
+Row	                                display: flex; flex-direction: row;	            Aligne les éléments horizontalement
+Column	                            display: flex; flex-direction: column;	        Aligne les éléments verticalement
+MainAxisAlignment	                justify-content                             	Contrôle l’espacement sur l’axe principal
+CrossAxisAlignment	                align-items	                                    Contrôle l’alignement sur l’axe perpendiculaire
+Expanded(flex: X)	                flex-grow: X	                                Prend une part égale de l’espace disponible
+Flexible	                        flex-shrink, flex-basis	                        Prend une part souple, mais peut s’adapter sans forcer
+Spacer()	                        margin auto, ou flex-grow	                    Crée de l’espace dynamique entre les éléments

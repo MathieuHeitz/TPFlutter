@@ -1,0 +1,83 @@
+import 'package:flutter/material.dart';
+
+// Widget personnalisé pour afficher une carte profil avec état local (likes)
+class CarteUtilisateur extends StatefulWidget {
+  final String nom;
+  final String role;
+  final String imageUrl;
+  final double note;
+
+  const CarteUtilisateur({
+    super.key,
+    required this.nom,
+    required this.role,
+    required this.imageUrl,
+    required this.note,
+  });
+
+  @override
+  State<CarteUtilisateur> createState() => _CarteUtilisateurState();
+}
+
+class _CarteUtilisateurState extends State<CarteUtilisateur> {
+  int likes = 0; // Compteur de likes
+
+  void incrementerLikes() {
+    setState(() {
+      likes++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 6,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      margin: const EdgeInsets.only(bottom: 20),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            // Avatar circulaire
+            CircleAvatar(
+              radius: 40,
+              backgroundImage: NetworkImage(widget.imageUrl),
+            ),
+            const SizedBox(height: 12),
+
+            // Nom & rôle
+            Text(widget.nom,
+                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            Text(widget.role, style: const TextStyle(color: Colors.grey)),
+
+            const SizedBox(height: 10),
+
+            // Note avec icône étoile
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.star, color: Colors.amber),
+                const SizedBox(width: 4),
+                Text(widget.note.toString(), style: const TextStyle(fontSize: 16)),
+              ],
+            ),
+
+            const SizedBox(height: 16),
+
+            // Bouton Like dynamique
+            ElevatedButton.icon(
+              onPressed: incrementerLikes,
+              icon: const Icon(Icons.thumb_up),
+              label: Text('Like ($likes)'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: likes >= 5 ? Colors.pink : Colors.blue,
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

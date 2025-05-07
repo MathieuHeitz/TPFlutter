@@ -1,0 +1,97 @@
+// 🏠 Scaffold
+// Structure d'écran matériel avec AppBar, body, FAB, etc.
+
+Scaffold(
+appBar: AppBar(title: Text("Ma page")),
+body: Center(child: Text("Contenu")),
+)
+
+// 🔲 AppBar
+// Barre supérieure d'un écran, souvent avec un titre
+
+AppBar(title: Text("Titre"))
+
+// 🔲 Text
+// Affiche une chaîne de caractères
+
+Text("Bonjour")
+
+// 🔲 Image
+// Affiche une image locale ou réseau
+
+Image.network("https://url")
+
+// 🔲 ElevatedButton
+// Bouton cliquable avec une action
+
+ElevatedButton(onPressed: () => print("click"), child: Text("OK"))
+
+// 🔲 Column & Row
+
+// Column : enfants alignés verticalement
+// Row : enfants alignés horizontalement
+
+Column(
+children: [Text("haut"), Text("bas")],
+)
+
+Row(
+children: [Icon(Icons.star), Text("note")],
+)
+
+// 🔲 Padding
+// Ajoute de l'espacement intérieur autour d'un widget
+
+Padding(
+padding: EdgeInsets.all(16.0),
+child: Text("Avec marge"),
+)
+
+// 🔲 Container
+// Boîte générique pour ajouter couleurs, taille, bordures
+
+Container(
+width: 200, height: 100, color: Colors.amber,
+)
+
+// 🔲 SizedBox
+// Boîte vide pour forcer un espace ou une taille
+
+SizedBox(height: 20)
+
+// 🔲 Spacer
+// Crée un espace flexible entre widgets dans une Row ou Column
+
+Row(
+children: [Text("A"), Spacer(), Text("B")],
+)
+
+// 🔹 Styles et thèmes
+// 🌟 Theme.of(context)
+// Permet d'accéder au thème global courant de l'app
+// Exemple : couleur primaire, style de texte
+
+Text("Stylé", style: Theme.of(context).textTheme.headlineSmall)
+
+// 📖 TextStyle
+
+// Permet de personnaliser le texte (gras, taille, couleur, etc.)
+// Text("Hello", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))
+Text("Hello", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))
+
+// 🖊️ Couleurs
+
+// Utilisation de Colors.red, Colors.blue[100], Color(0xFF123456)
+// Peut être modifié dynamiquement via ThemeData
+
+// 🎯 Exercices pratiques
+
+// Créer une page Flutter avec :
+
+// Scaffold
+// AppBar avec le titre "Ma première page"
+// Un Column centré avec deux Text, un Image.network() et un ElevatedButton
+
+// Modifier le texte et le bouton pour qu'ils changent de valeur avec StatefulWidget
+// Ajouter des Padding, SizedBox et Container pour améliorer le layout
+// Créer un composant MonBoutonPerso (widget personnalisé) avec une couleur de fond et un texte passé en paramètre

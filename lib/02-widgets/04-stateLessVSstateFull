@@ -1,0 +1,93 @@
+// Import de la bibliothèque Flutter (obligatoire pour construire l'interface)
+import 'package:flutter/material.dart';
+
+
+// -------------------------
+// 📌 Widget statique : MonTitre
+// -------------------------
+
+// MonTitre est un StatelessWidget = son contenu ne change jamais après création
+class MonTitre extends StatelessWidget {
+  final String texte; // Propriété texte reçue par le widget
+
+  // Constructeur avec paramètre obligatoire "texte"
+  const MonTitre({required this.texte});
+
+  @override
+  Widget build(BuildContext context) {
+    // Affiche simplement le texte reçu
+    return Text(texte);
+  }
+}
+
+
+// -------------------------
+// 🔁 Widget dynamique (avec état) : Compteur
+// -------------------------
+
+// Compteur est un StatefulWidget = son contenu peut évoluer dans le temps
+class Compteur extends StatefulWidget {
+  const Compteur({super.key}); // clé facultative (bonne pratique)
+
+  @override
+  State<Compteur> createState() => _CompteurState(); // Crée l’état lié à ce widget
+}
+
+// Classe qui gère l’état du widget Compteur
+class _CompteurState extends State<Compteur> {
+  int _valeur = 0; // Donnée dynamique : compteur
+
+  // Méthode pour augmenter la valeur du compteur
+  void _incrementer() {
+    setState(() => _valeur++); // setState() relance build() pour mettre à jour l'UI
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // Affiche une colonne avec un texte et un bouton
+    return Column(
+      children: [
+        Text('$_valeur'), // Affiche la valeur actuelle du compteur
+        ElevatedButton(
+          onPressed: _incrementer, // Quand on appuie, on appelle la fonction
+          child: Text("+1"), // Texte du bouton
+        ),
+      ],
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+🧠 Qu’est-ce que l’état dans Flutter ?
+L’état, c’est ce qui change dans un widget au fil du temps (données, interface, interactions).
+Flutter doit savoir quand et comment redessiner un widget en fonction de ce changement.
+
+📌 Exemple simple d’état
+    🔘 Un compteur qui augmente quand on appuie sur un bouton
+    🌙 Un bouton qui change le thème (clair / sombre)
+    🧑‍💻 Un champ texte où l’utilisateur saisit son nom
+    ➡️ Tout cela implique un changement d’état : une variable a changé, et l’interface doit être mise à jour dynamiquement.
+
+🧱 StatelessWidget vs StatefulWidget
+    Type de widget	            Peut changer ?	                Méthode de build() déclenchée quand ?
+    StatelessWidget	             ❌ Non	                        Une seule fois à la création
+    StatefulWidget	            ✅ Oui	                        À chaque setState()
+
+🧩 StatelessWidget :
+    Utilisé pour des interfaces figées, qui ne bougent pas une fois créées.
+
+🔁 StatefulWidget :
+    Utilisé quand il y a une donnée ou une interface qui doit changer (état interne).

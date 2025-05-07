@@ -1,0 +1,20 @@
+🧠 Qu’est-ce que l’état dans Flutter ?
+L’état, c’est ce qui change dans un widget au fil du temps (données, interface, interactions).
+Flutter doit savoir quand et comment redessiner un widget en fonction de ce changement.
+
+📌 Exemple simple d’état
+    🔘 Un compteur qui augmente quand on appuie sur un bouton
+    🌙 Un bouton qui change le thème (clair / sombre)
+    🧑‍💻 Un champ texte où l’utilisateur saisit son nom
+    ➡️ Tout cela implique un changement d’état : une variable a changé, et l’interface doit être mise à jour dynamiquement.
+
+🧱 StatelessWidget vs StatefulWidget
+    Type de widget	            Peut changer ?	                Méthode de build() déclenchée quand ?
+    StatelessWidget	             ❌ Non	                        Une seule fois à la création
+    StatefulWidget	            ✅ Oui	                        À chaque setState()
+
+🧩 StatelessWidget :
+    Utilisé pour des interfaces figées, qui ne bougent pas une fois créées.
+
+🔁 StatefulWidget :
+    Utilisé quand il y a une donnée ou une interface qui doit changer (état interne).

@@ -1,0 +1,43 @@
+// 🔹 Navigation en Flutter
+
+// 🔶 1. MaterialApp et le context
+
+// MaterialApp gère le squelette global de l'app : thème, navigation, etc.
+// context est l'objet qui permet d'accéder à l'environnement du widget (thème, routes, etc.)
+// On navigue entre pages grâce au Navigator et au context.
+
+Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const SecondePage()),
+);
+
+// push ajoute une nouvelle page (comme une pile)
+
+// pop() permet de revenir en arrière
+
+// pushReplacement() remplace la page actuelle
+
+Navigator.pop(context); // revenir à la page précédente
+
+
+
+//// PASSER DES DONNÉES ENTRE LES PAGES
+
+
+Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => SecondePage(nom: "Sam")),
+);
+
+  class SecondePage extends StatelessWidget {
+    final String nom;
+    const SecondePage({required this.nom, super.key});
+
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        appBar: AppBar(title: const Text("Seconde page")),
+        body: Center(child: Text("Bonjour $nom")),
+      );
+    }
+  }

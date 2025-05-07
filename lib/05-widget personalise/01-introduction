@@ -1,0 +1,9 @@
+🔸 Pourquoi créer ses propres widgets ?
+    Flutter fonctionne par composition : tout est un widget.
+    Quand une partie de l'UI est réutilisable ou isolable, on crée un widget personnalisé.
+
+👉 Avantages :
+
+    Code plus lisible
+    Interface factorisée
+    Facile à tester ou modifier

@@ -1,0 +1,14 @@
+Terme	                        Définition
+
+Responsive	                    L’interface s’adapte automatiquement à la taille de l’écran (via MediaQuery, LayoutBuilder, Wrap, Expanded...)
+Adaptive	                    L’interface change complètement de layout ou de logique selon le type d’appareil (mobile, tablette, desktop)
+
+
+📦 2. Widgets à connaître
+MediaQuery: donne la taille de l’écran, l’orientation, etc.
+LayoutBuilder: donne les contraintes de rendu à un widget
+Expanded / Flexible: contrôle l'espace occupé dans un Row ou Column
+Wrap: permet de passer à la ligne automatiquement
+FittedBox: adapte la taille d’un widget à son parent
+OrientationBuilder: détecte les changements d’orientation
+LayoutHelper: classe personnalisée pour détecter un mobile/tablette
